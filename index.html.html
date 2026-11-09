@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-LKPD Pertemuan 1 - Hubungan Antar Sudut</title>
+<style>
+:root{--bg:#f4f7fb;--ink:#1f2937;--mut:#6b7280;--pri:#2563eb;--pd:#1d4ed8;--acc:#f59e0b;--ok:#16a34a;--bad:#dc2626;--line:#e5e7eb}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+header{background:linear-gradient(135deg,#1e3a8a,#2563eb 60%,#06b6d4);color:#fff;padding:20px}
+header div,nav div,main{max-width:1000px;margin:auto}
+header h1{margin:0;font-size:1.45rem}header p{margin:2px 0 0;opacity:.9;font-size:.92rem}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+nav div{display:flex;gap:4px;overflow-x:auto;padding:6px 10px}
+nav button{border:0;background:0;padding:9px 13px;border-radius:10px;cursor:pointer;font-weight:600;color:var(--mut);white-space:nowrap}
+nav button.active{background:var(--pri);color:#fff}
+main{padding:18px 14px 50px}
+section{display:none}section.show{display:block}
+.card{background:#fff;border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+h2{margin:0 0 8px;color:#1e3a8a}h3{margin:12px 0 6px;color:#1e40af}
+.step{display:inline-block;background:#dbeafe;color:#1e40af;font-weight:700;font-size:.8rem;padding:2px 10px;border-radius:99px;margin-bottom:6px}
+.spark{background:#fffbeb;border-left:5px solid var(--acc);padding:10px 14px;border-radius:10px;margin:10px 0}
+.info{background:#eff6ff;border-radius:10px;padding:10px 14px;font-size:.95rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+svg{width:100%;height:auto;background:#fafcff;border:1px solid var(--line);border-radius:10px;display:block}
+.btn{background:var(--pri);color:#fff;border:0;border-radius:10px;padding:8px 14px;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--pd)}.btn.alt{background:#e0e7ff;color:#1e3a8a}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.ctrl label{display:flex;justify-content:space-between;font-weight:600;font-size:.92rem}
+input[type=range]{width:100%;accent-color:var(--pri)}
+input,select,textarea{padding:8px 10px;border:1px solid #cbd5e1;border-radius:10px;font:inherit;width:100%;background:#fff}
+textarea{min-height:64px}
+input.sm{width:84px;display:inline-block;text-align:center}
+input[type=checkbox]{width:auto}
+p select,li select{width:auto;max-width:100%}
+td input[type=number]{min-width:64px;text-align:center}
+.q{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}.q div{flex:0 0 150px}.q input{flex:1 1 220px;width:auto}
+.ok{color:var(--ok);font-weight:700}.bad{color:var(--bad);font-weight:700}
+.okb{border-color:var(--ok)!important;background:#dcfce7!important}.badb{border-color:var(--bad)!important;background:#fee2e2!important}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:6px 0}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef2ff}
+.sc{overflow-x:auto}
+.hint{font-size:.85rem;color:var(--mut)}
+.res{margin-top:6px}
+</style>
+</head>
+<body>
+<header><div>
+<h1>📐 E-LKPD Pertemuan 1: Hubungan Antar Sudut</h1>
+<p>Matematika Kelas VII / Fase D · Problem Based Learning · 90 menit</p>
+</div></header>
+<nav id="nav"><div>
+<button data-t="awal" class="active">Identitas</button>
+<button data-t="masalah">Fase 1–2</button>
+<button data-t="k1">Kegiatan 1</button>
+<button data-t="k2">Kegiatan 2</button>
+<button data-t="k3a">Kegiatan 3A</button>
+<button data-t="k3b">Kegiatan 3B</button>
+<button data-t="selesai">Fase 4</button>
+<button data-t="akhir">Fase 5</button>
+<button data-t="ggb">🧭 GeoGebra</button>
+</div></nav>
+<main>
+
+<section id="awal" class="show" data-n="Identitas">
+<div class="card">
+<h2>Identitas</h2>
+<table><tr><th>Mata pelajaran</th><td>Matematika</td></tr><tr><th>Kelas / Fase</th><td>VII / D</td></tr><tr><th>Topik</th><td>Hubungan Antar Sudut</td></tr><tr><th>Pertemuan</th><td>1</td></tr><tr><th>Alokasi waktu</th><td>90 menit</td></tr><tr><th>Model pembelajaran</th><td>Problem Based Learning (PBL)</td></tr></table>
+<div class="q"><div>Nama kelompok</div><input type="text" id="nama"></div>
+<div class="q"><div>Anggota kelompok</div><input type="text" id="kelas" placeholder="Tulis 3–4 nama, pisahkan dengan koma"></div>
+<div class="q"><div>Hari / tanggal</div><input type="text" id="tgl"></div>
+</div>
+<div class="card">
+<h3>Tujuan Pembelajaran</h3>
+<ol style="margin:0"><li>Menentukan penamaan sudut.</li><li>Menentukan hubungan antar sudut pada garis-garis yang berpotongan dan pada dua garis sejajar yang dipotong oleh garis transversal.</li></ol>
+<h3>Petunjuk Pengerjaan</h3>
+<ol style="margin:0"><li>Berdoalah sebelum mengerjakan LKPD ini.</li><li>Bentuklah kelompok yang terdiri dari 3 sampai 4 orang.</li><li>Bacalah setiap langkah dengan teliti dan kerjakan secara berurutan.</li><li>Diskusikan setiap pertanyaan bersama anggota kelompok. Jika ada kesulitan, bertanyalah kepada guru.</li><li>Tuliskan jawaban pada tempat yang sudah disediakan.</li></ol>
+<div class="btns"><button class="btn" onclick="go('masalah')">Mulai: Fase 1 ➜</button></div>
+</div>
+</section>
+
+<section id="masalah" data-n="Fase 1">
+<div class="card">
+<span class="step">Fase 1 · Orientasi Peserta Didik pada Masalah</span>
+<h2>Masalah: Marka Jalan di Kota Sukamaju</h2>
+<p>Analisislah masalah berikut bersama teman kelompok kalian!</p>
+<div class="spark">Dinas Perhubungan Kota Sukamaju akan memasang marka dan rambu di dua lokasi. Lokasi pertama adalah perempatan Jalan Mawar dan Jalan Melati yang saling berpotongan. Dari hasil pengukuran, salah satu sudut di perempatan itu besarnya <b>65°</b>. Lokasi kedua adalah Jalan Anggrek dan Jalan Dahlia yang sejajar, dipotong oleh Jalan Kenanga. Dari hasil pengukuran, salah satu sudut yang terbentuk besarnya <b>110°</b>.<br><br>Petugas hanya sempat mengukur satu sudut di setiap lokasi, padahal rambu perlu dipasang berdasarkan semua sudut yang terbentuk.</div>
+<div class="two"><div><b>Lokasi 1: perempatan</b><svg id="svgL1" viewBox="0 0 500 300"></svg></div><div><b>Lokasi 2: dua jalan sejajar</b><svg id="svgL2" viewBox="0 0 600 340"></svg></div></div>
+<p class="hint">Tanda ? adalah sudut yang perlu ditentukan. Kedua jalan pada Lokasi 2 sejajar.</p>
+<p>Tulislah hasil pemahaman kalian pada tabel berikut!</p>
+<table>
+<tr><th style="width:40%">Pertanyaan</th><th>Jawaban kelompok</th></tr>
+<tr><td>Apa saja yang diketahui dari masalah di atas?</td><td><textarea data-l="Apa saja yang diketahui?"></textarea></td></tr>
+<tr><td>Apa yang ditanyakan?</td><td><textarea data-l="Apa yang ditanyakan?"></textarea></td></tr>
+<tr><td>Informasi apa yang masih perlu kita cari?</td><td><textarea data-l="Informasi yang masih perlu dicari"></textarea></td></tr>
+</table>
+</div>
+<div class="card">
+<span class="step">Fase 2 · Mengorganisasikan Peserta Didik untuk Belajar</span>
+<p style="margin:0">Kerjakan E-LKPD secara berkelompok dan sesuai dengan perintah guru.</p>
+<div class="btns"><button class="btn" onclick="go('k1')">Lanjut: Kegiatan 1 ➜</button></div>
+</div>
+</section>
+
+<section id="k1" data-n="Kegiatan 1">
+<div class="card">
+<span class="step">Fase 3 · Membimbing Penyelidikan (35 menit)</span>
+<h2>Kegiatan 1: Penamaan Sudut (8 menit)</h2>
+<b>Informasi penting</b>
+<p>Sudut dibentuk oleh dua sinar yang bertemu di satu titik. Titik pertemuan itu disebut <b>titik sudut</b>, sedangkan kedua sinar disebut <b>kaki sudut</b>. Sudut dapat dinamai dengan tiga cara.</p>
+<table><tr><th>Cara penamaan</th><th>Contoh</th><th>Keterangan</th></tr>
+<tr><td>Tiga huruf</td><td>∠ABC atau ∠CBA</td><td>Huruf di tengah (B) selalu titik sudut</td></tr>
+<tr><td>Satu huruf</td><td>∠B</td><td>Dipakai jika di titik tersebut hanya ada satu sudut</td></tr>
+<tr><td>Simbol atau angka</td><td>∠1, ∠2, α, β</td><td>Biasanya ditulis di dalam daerah sudut</td></tr></table>
+<b>Ayo selidiki</b>
+<p class="hint">Gunakan GeoGebra di bawah ini untuk mengerjakan nomor 1 dan 2. Pilih alat pada toolbar (titik, garis, sinar, sudut), lalu tuliskan jawabanmu pada kolom di bawahnya.</p>
+<div id="gbK1" class="ggbfit" style="min-height:300px;border:1px solid var(--line);border-radius:10px;background:#fff;text-align:center;color:var(--mut)">Memuat GeoGebra Classic… (butuh internet)</div>
+<ol>
+<li>Buatlah sebuah sudut menggunakan GeoGebra dengan titik sudut P, kaki sudut PQ dan PR. Tuliskan penamaan dari sudut tersebut!<textarea data-l="K1 no 1: penamaan sudut P"></textarea></li>
+<li>Buatlah garis AB dan CD yang berpotongan di titik O menggunakan GeoGebra. Tuliskan nama keempat sudut yang terbentuk menggunakan tiga huruf.<textarea data-l="K1 no 2: nama keempat sudut"></textarea></li>
+<li>Bolehkah salah satu sudut pada soal nomor 2 ditulis dengan ∠O saja? Jelaskan alasannya.<textarea data-l="K1 no 3: bolehkah ∠O"></textarea></li>
+</ol>
+<div class="btns"><button class="btn alt" onclick="tg('k1r')">Lihat pembahasan</button><button class="btn" onclick="go('k2')">Lanjut: Kegiatan 2 ➜</button></div>
+<div class="info" id="k1r" hidden>No 1: ∠QPR, ∠RPQ, atau ∠P.<br>No 2: ∠AOC, ∠COB, ∠BOD, ∠DOA.<br>No 3: Tidak boleh. Di titik O terbentuk empat sudut, sehingga ∠O tidak jelas menunjuk sudut yang mana.</div>
+</div>
+</section>
+
+<section id="k2" data-n="Kegiatan 2">
+<div class="card">
+<span class="step">Fase 3 · Membimbing Penyelidikan</span>
+<h2>Kegiatan 2: Istilah dalam Hubungan Antar Sudut (9 menit)</h2>
+<b>Informasi penting</b>
+<p>Garis transversal adalah garis yang memotong dua garis lain di titik yang berbeda. Perhatikan Gambar 1. Garis MN sejajar dengan garis PR, keduanya dipotong oleh garis transversal ST.</p>
+<svg id="svgG" viewBox="0 0 600 340" style="max-width:560px"></svg>
+<p class="hint">Gambar 1. Garis MN sejajar garis PR dipotong garis transversal ST. Klik kolom istilah pada tabel, pasangan sudutnya akan tersorot.</p>
+<p>Petunjuk letak sudut: ∠a dan ∠b berada di atas garis MN, ∠c dan ∠d di bawah garis MN, ∠e dan ∠f di atas garis PR, ∠g dan ∠h di bawah garis PR.</p>
+<b>Kotak istilah</b>
+<table><tr><th>Istilah</th><th>Ciri letak sudut</th></tr>
+<tr><td>Sehadap</td><td>Letaknya sama terhadap transversal (sama-sama kiri atau kanan) dan sama terhadap garis sejajarnya (sama-sama atas atau bawah)</td></tr>
+<tr><td>Dalam berseberangan</td><td>Berada di antara dua garis sejajar dan berseberangan sisi transversal</td></tr>
+<tr><td>Luar berseberangan</td><td>Berada di luar dua garis sejajar dan berseberangan sisi transversal</td></tr>
+<tr><td>Dalam sepihak</td><td>Berada di antara dua garis sejajar dan sepihak (satu sisi) terhadap transversal</td></tr>
+<tr><td>Luar sepihak</td><td>Berada di luar dua garis sejajar dan sepihak (satu sisi) terhadap transversal</td></tr></table>
+<b>Ayo selidiki</b>
+<p>Lengkapi tabel berikut dengan memilih istilah dari kotak istilah!</p>
+<div class="nc" data-s="Istilah (10 pasangan)"><div class="sc"><table id="pt"></table></div><button class="btn" onclick="chk(this)">Periksa</button><div class="res"></div></div>
+<div class="bb" data-s="Bertolak belakang" style="margin-top:12px">
+<p>Tuliskan dua pasangan sudut yang saling bertolak belakang pada garis MN: ∠<input class="sm" id="b1" data-l="Bertolak belakang: sudut 1"> dan ∠<input class="sm" id="b2" data-l="Bertolak belakang: sudut 2"> serta ∠<input class="sm" id="b3" data-l="Bertolak belakang: sudut 3"> dan ∠<input class="sm" id="b4" data-l="Bertolak belakang: sudut 4"></p>
+<button class="btn alt" onclick="chkBB()">Periksa</button> <span id="bbr"></span></div>
+<div class="btns"><button class="btn" onclick="go('k3a')">Lanjut: Kegiatan 3A ➜</button></div>
+</div>
+</section>
+
+<section id="k3a" data-n="Kegiatan 3A">
+<div class="card">
+<span class="step">Fase 3 · Membimbing Penyelidikan</span>
+<h2>Kegiatan 3A: Dua Garis Berpotongan</h2>
+<ol style="margin-top:0"><li>Buatlah dua garis lurus yang berpotongan di titik O menggunakan GeoGebra. Beri nama keempat sudutnya ∠1, ∠2, ∠3, dan ∠4 secara berurutan mengelilingi titik O.</li><li>Tentukan ukuran setiap sudut menggunakan GeoGebra, lalu isi tabel berikut!</li></ol>
+<div id="gbA" class="ggbfit" style="min-height:300px;border:1px solid var(--line);border-radius:10px;background:#fff;text-align:center;color:var(--mut)">Memuat GeoGebra Classic… (butuh internet)</div>
+<details style="margin-top:10px"><summary>Simulasi bantuan (opsional)</summary>
+<svg id="svgC" viewBox="0 0 500 300" style="max-width:560px"></svg>
+<div class="ctrl" style="max-width:560px"><label>Besar ∠1 <span id="thAv"></span></label><input type="range" id="thA" min="20" max="160" value="65"></div></details>
+</div>
+<div class="card nc" data-s="Kegiatan 3A">
+<p class="hint">Isi tabel dengan hasil ukur dari GeoGebra kelompokmu. Tombol Periksa memeriksa apakah hubungan antar sudut pada angka-angkamu sudah konsisten.</p>
+<table><tr><th>Sudut</th><th>∠1</th><th>∠2</th><th>∠3</th><th>∠4</th></tr>
+<tr><th>Besar (derajat)</th><td><input type="number" data-m3="0" data-tol=".6" data-l="3A: besar ∠1"></td><td><input type="number" data-m3="1" data-tol=".6" data-l="3A: besar ∠2"></td><td><input type="number" data-m3="2" data-tol=".6" data-l="3A: besar ∠3"></td><td><input type="number" data-m3="3" data-tol=".6" data-l="3A: besar ∠4"></td></tr></table>
+<p><b>Amati hasil pengukuran untuk menjawab pertanyaan berikut.</b></p>
+<p>a. Sudut mana saja yang besarnya sama? <i class="S" data-a="x" data-l="3A a: sudut yang sama besar" data-o="x=∠1 dan ∠3, serta ∠2 dan ∠4|y=∠1 dan ∠2, serta ∠3 dan ∠4|z=∠1 dan ∠4, serta ∠2 dan ∠3"></i></p>
+<p>b. Apakah sudut-sudut tersebut saling berhadapan atau bersebelahan? <i class="S" data-a="h" data-l="3A b: berhadapan/bersebelahan" data-o="h=saling berhadapan|b=saling bersebelahan"></i></p>
+<p>c. Berapa jumlah dua sudut yang saling bersebelahan? <input type="number" class="sm" data-a="180" data-l="3A c: jumlah dua sudut bersebelahan"> °</p>
+<p><b>Lengkapi kalimat berikut untuk membuat kesimpulan.</b><br>Pada dua garis yang berpotongan, sudut yang saling bertolak belakang besarnya <i class="S" data-a="s" data-l="3A kesimpulan: bertolak belakang" data-o="s=sama besar|t=berbeda"></i>, sedangkan dua sudut yang saling bersebelahan jumlahnya <input type="number" class="sm" data-a="180" data-l="3A kesimpulan: jumlah"> derajat sehingga disebut sudut <i class="S" data-a="p" data-l="3A kesimpulan: sebutan sudut" data-o="p=berpelurus|b=bertolak belakang|k=berpenyiku"></i>.</p>
+<button class="btn" onclick="chk(this)">Periksa</button><div class="res"></div>
+<div class="btns"><button class="btn" onclick="go('k3b')">Lanjut: Kegiatan 3B ➜</button></div>
+</div>
+</section>
+
+<section id="k3b" data-n="Kegiatan 3B">
+<div class="card">
+<span class="step">Fase 3 · Membimbing Penyelidikan</span>
+<h2>Kegiatan 3B: Dua Garis Sejajar Dipotong Garis Transversal (10 menit)</h2>
+<ol style="margin-top:0"><li>Buatlah dua garis sejajar menggunakan GeoGebra.</li><li>Buatlah satu garis transversal yang memotong kedua garis sejajar tadi. Beri nomor ∠1 sampai ∠8 dengan aturan yang sama seperti pada Gambar 1 (∠1 = a, ∠2 = b, dan seterusnya sampai ∠8 = h).</li><li>Tentukan ukuran kedelapan sudut menggunakan GeoGebra, lalu isi tabel berikut!</li></ol>
+<div id="gbB" class="ggbfit" style="min-height:300px;border:1px solid var(--line);border-radius:10px;background:#fff;text-align:center;color:var(--mut)">Memuat GeoGebra Classic… (butuh internet)</div>
+<details style="margin-top:10px"><summary>Simulasi bantuan (opsional)</summary>
+<svg id="svgP" viewBox="0 0 600 340" style="max-width:560px"></svg>
+<div class="ctrl" style="max-width:560px"><label>Kemiringan transversal <span id="thBv"></span></label><input type="range" id="thB" min="30" max="150" value="60"></div>
+<label class="hint"><input type="checkbox" id="shB" checked> Tampilkan ukuran sudut pada gambar</label></details>
+</div>
+<div class="card nc" data-s="Kegiatan 3B">
+<p class="hint">Isi tabel dengan hasil ukur dari GeoGebra kelompokmu. Tombol Periksa memeriksa apakah hubungan antar sudut pada angka-angkamu sudah konsisten.</p>
+<div class="sc"><table id="t8"></table></div>
+<p><b>Bandingkan besar sudut pada setiap pasangan, lalu lengkapi tabel berikut.</b></p>
+<div class="sc"><table id="t6"></table></div>
+<p><b>Lengkapilah kalimat di bawah untuk menarik kesimpulan!</b><br>Jika dua garis sejajar dipotong oleh garis transversal, maka:</p>
+<ul>
+<li>sudut sehadap besarnya <i class="S" data-a="s" data-l="3B kesimpulan: sehadap" data-o="s=sama besar|j=jumlahnya 180°"></i></li>
+<li>sudut dalam berseberangan besarnya <i class="S" data-a="s" data-l="3B kesimpulan: dalam berseberangan" data-o="s=sama besar|j=jumlahnya 180°"></i></li>
+<li>sudut luar berseberangan besarnya <i class="S" data-a="s" data-l="3B kesimpulan: luar berseberangan" data-o="s=sama besar|j=jumlahnya 180°"></i></li>
+<li>sudut dalam sepihak <i class="S" data-a="j" data-l="3B kesimpulan: dalam sepihak" data-o="s=besarnya sama|j=jumlahnya 180°"></i></li>
+<li>sudut luar sepihak <i class="S" data-a="j" data-l="3B kesimpulan: luar sepihak" data-o="s=besarnya sama|j=jumlahnya 180°"></i></li></ul>
+<button class="btn" onclick="chk(this)">Periksa</button><div class="res"></div>
+<div class="btns"><button class="btn" onclick="go('selesai')">Lanjut: Fase 4 ➜</button></div>
+</div>
+</section>
+
+<section id="selesai" data-n="Fase 4">
+<div class="card">
+<span class="step">Fase 4 · Mengembangkan dan Menyajikan Hasil Karya</span>
+<h2>Selesaikan Masalah Kota Sukamaju</h2>
+<p>Gunakan hasil penyelidikan untuk menyelesaikan masalah Kota Sukamaju, lalu sajikan hasilnya.</p>
+<h3>Bagian A: Perempatan Jalan Mawar dan Jalan Melati</h3>
+<p>Salah satu sudut yang terbentuk besarnya 65°. Tentukan ketiga sudut lainnya beserta alasannya.</p>
+<svg id="svgL1b" viewBox="0 0 500 300" style="max-width:420px"></svg>
+<div class="nc" data-s="Bagian A">
+<table><tr><th>Sudut</th><th>Besar (°)</th></tr>
+<tr><td>Sudut bertolak belakang dengan sudut 65°</td><td><input type="number" data-a="65" data-l="A: bertolak belakang dengan 65°"></td></tr>
+<tr><td>Sudut yang berpelurus dengan sudut 65°</td><td><input type="number" data-a="115" data-l="A: berpelurus dengan 65°"></td></tr>
+<tr><td>Sudut yang bertolak belakang dengan sudut tersebut</td><td><input type="number" data-a="115" data-l="A: bertolak belakang dengan sudut berpelurus"></td></tr></table>
+<p>Alasan kelompok:</p><textarea data-l="A: alasan"></textarea>
+<button class="btn" onclick="chk(this)">Periksa</button><div class="res"></div></div>
+<h3>Bagian B: Jalan Anggrek, Jalan Dahlia, dan Jalan Kenanga</h3>
+<p>Jalan Anggrek sejajar dengan Jalan Dahlia, keduanya dipotong Jalan Kenanga. Jika ∠C pada gambar besarnya 110°, tentukan besar sudut lainnya dan tuliskan alasannya.</p>
+<svg id="svgL2b" viewBox="0 0 600 340" style="max-width:560px"></svg>
+<div class="nc" data-s="Bagian B"><div class="sc"><table id="tB"></table></div>
+<button class="btn" onclick="chk(this)">Periksa besar sudut</button> <button class="btn alt" onclick="tg('tBr')">Lihat contoh alasan</button><div class="res"></div>
+<div class="info" id="tBr" hidden>∠A berpelurus dengan ∠C. ∠B bertolak belakang dengan ∠C. ∠C diketahui. ∠D bertolak belakang dengan ∠A. ∠E dan ∠C dalam sepihak. ∠F dan ∠C dalam berseberangan. ∠G dan ∠C sehadap.</div></div>
+<h3>Bagian C: Kesimpulan</h3>
+<textarea data-l="Bagian C: kesimpulan" style="min-height:110px"></textarea>
+<p>Presentasikan hasil kelompokmu, lalu perbaiki jawaban jika ada kesalahan konsep.</p>
+<div class="btns"><button class="btn" onclick="go('akhir')">Lanjut: Fase 5 ➜</button></div>
+</div>
+</section>
+
+<section id="akhir" data-n="Fase 5">
+<div class="card">
+<span class="step">Fase 5 · Menganalisis dan Mengevaluasi Proses Pemecahan Masalah (15 menit)</span>
+<h2>Evaluasi Proses Kelompok</h2>
+<p>Periksa kembali penyelesaian kelompok dengan menjawab pertanyaan berikut.</p>
+<table><tr><th style="width:40%">Pertanyaan</th><th>Jawaban</th></tr>
+<tr><td>Langkah mana yang paling sulit dan bagaimana kami mengatasinya?</td><td><textarea data-l="Langkah tersulit dan cara mengatasinya"></textarea></td></tr></table>
+<div class="btns"><button class="btn" onclick="saveRef()">💾 Simpan &amp; Kirim Semua Jawaban</button></div><div id="fbRef"></div>
+<p class="hint">Tombol ini mengirim semua jawaban dari seluruh tab beserta skor otomatis ke guru. Pastikan nama kelompok di tab Identitas sudah diisi.</p>
+</div>
+</section>
+
+<section id="ggb" data-n="GeoGebra">
+<div class="card">
+<h2>🧭 Ruang GeoGebra Classic</h2>
+<ol style="margin-top:0"><li>Kegiatan 1: buat sudut P dengan kaki PQ dan PR, lalu garis AB dan CD yang berpotongan di O.</li><li>Kegiatan 3A: buat dua garis berpotongan di O, beri nama ∠1 sampai ∠4, ukur setiap sudut.</li><li>Kegiatan 3B: buat dua garis sejajar dan satu transversal, beri nomor ∠1 sampai ∠8, ukur setiap sudut.</li></ol>
+<div id="gb" class="ggbfit" style="min-height:200px;border:1px solid var(--line);border-radius:10px;background:#fff;text-align:center;color:var(--mut)">Memuat GeoGebra Classic… (butuh internet)</div>
+<p class="hint"><a href="https://www.geogebra.org/geometry" target="_blank" rel="noopener">Buka GeoGebra Geometri di tab baru</a></p>
+</div>
+</section>
+</main>
+<footer style="text-align:center;color:var(--mut);font-size:.85rem;padding:18px">E-LKPD Pertemuan 1: Hubungan Antar Sudut · Matematika Kelas VII</footer>
+<script>
+const GAS_URL='https://script.google.com/macros/s/AKfycbzK--6J3QvcixQNwgZFQ9qvGvYfbLCvWFzduwZtIiSxsB9B39EoQwyoYJeIVh7K5eae/exec';
+const $=i=>document.getElementById(i),A=s=>[...document.querySelectorAll(s)];
+function go(id){A('main section').forEach(s=>s.classList.toggle('show',s.id==id));A('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.t==id));scrollTo(0,0);if(id=='ggb')loadG('gb',600);if(id=='k1')loadG('gbK1',600);if(id=='k3a')loadG('gbA',600);if(id=='k3b')loadG('gbB',600)}
+A('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.t));
+const tg=id=>$(id).hidden=!$(id).hidden;
+
+/* dropdown dari penanda <i class="S"> */
+A('i.S').forEach(i=>{const s=document.createElement('select');s.dataset.a=i.dataset.a;s.dataset.l=i.dataset.l;s.innerHTML='<option value="">Pilih…</option>'+i.dataset.o.split('|').map(o=>{const[v,t]=o.split('=');return `<option value="${v}">${t}</option>`}).join('');i.replaceWith(s)});
+
+/* alat gambar */
+const pt=(cx,cy,r,d)=>[cx+r*Math.cos(d*Math.PI/180),cy-r*Math.sin(d*Math.PI/180)];
+const sec=(cx,cy,r,a,b,c)=>{const[x1,y1]=pt(cx,cy,r,a),[x2,y2]=pt(cx,cy,r,b);return `<path d="M${cx},${cy}L${x1},${y1}A${r},${r} 0 ${b-a>180?1:0} 0 ${x2},${y2}Z" fill="${c}" fill-opacity=".45" stroke="${c}"/>`};
+const lb=(cx,cy,r,a,b,t,c)=>{const[x,y]=pt(cx,cy,r,(a+b)/2);return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="700" fill="${c}">${t}</text>`};
+const V3=t=>[t,180-t,t,180-t],V8=t=>[180-t,t,t,180-t,180-t,t,t,180-t];
+const setA=(attr,v)=>A(`[${attr}]`).forEach(e=>{e.dataset.a=v[e.getAttribute(attr)]});
+
+/* dua garis sejajar dipotong transversal; lab = 8 label (a-d di garis atas, e-h di garis bawah) */
+function drawP(el,t,lab,hl,nm){hl=hl||[];nm=nm||[];
+  const y1=110,y2=230,xm=300,ym=170,r=Math.PI/180,sn=Math.sin(t*r),cs=Math.cos(t*r),ix=y=>xm+(ym-y)/sn*cs,P=[[ix(y1),y1],[ix(y2),y2]],ext=125/sn,[x1,w1]=pt(xm,ym,ext,t),[x2,w2]=pt(xm,ym,ext,t+180),R=[[t,180],[0,t],[180,t+180],[t+180,360]],col=['#2563eb','#e11d48'];
+  const T=(x,y,s,a)=>s?`<text x="${x}" y="${y}" font-size="14" font-weight="600" text-anchor="${a}" fill="#334155">${s}</text>`:'';
+  let s=`<line x1="30" y1="${y1}" x2="570" y2="${y1}" stroke="#334155" stroke-width="3"/><line x1="30" y1="${y2}" x2="570" y2="${y2}" stroke="#334155" stroke-width="3"/><line x1="${x2}" y1="${w2}" x2="${x1}" y2="${w1}" stroke="#7c3aed" stroke-width="3"/>`+T(8,y1-8,nm[0],'start')+T(592,y1-8,nm[1],'end')+T(8,y2-8,nm[2],'start')+T(592,y2-8,nm[3],'end')+T(x1+8,w1+4,nm[4],'start')+T(x2-8,w2+14,nm[5],'end');
+  lab.forEach((L,i)=>{const g=i%4,p=P[i<4?0:1],h=hl.indexOf(i);
+    s+=h>=0?sec(p[0],p[1],34,...R[g],col[h%2])+lb(p[0],p[1],58,...R[g],L,col[h%2]):lb(p[0],p[1],40,...R[g],L,'#64748b')});
+  $(el).innerHTML=s}
+
+/* perempatan: nilai v = [∠1..∠4] atau teks; hl = indeks yang diwarnai */
+function drawC(el,t,txt,names){
+  const cx=250,cy=150,L=210,C=['#2563eb','#e11d48','#059669','#d97706'],R=[[0,t],[t,180],[180,t+180],[t+180,360]];
+  const[a,b]=pt(cx,cy,L,t),[c,d]=pt(cx,cy,L,t+180);
+  let s=`<line x1="${cx-L}" y1="${cy}" x2="${cx+L}" y2="${cy}" stroke="#334155" stroke-width="3"/><line x1="${c}" y1="${d}" x2="${a}" y2="${b}" stroke="#334155" stroke-width="3"/><text x="${cx+8}" y="${cy+18}" font-size="13">O</text>`;
+  if(names)s+=`<text x="8" y="${cy-8}" font-size="13">Jalan Mawar</text><text x="${pt(cx,cy,125,t)[0]+8}" y="${pt(cx,cy,125,t)[1]}" font-size="13">Jalan Melati</text>`;
+  R.forEach((r,i)=>s+=(names&&i?'':sec(cx,cy,45,r[0],r[1],C[i]))+lb(cx,cy,72,r[0],r[1],txt[i],names&&i?'#64748b':C[i]));
+  $(el).innerHTML=s}
+
+/* gambar masalah */
+const NM2=['','Jalan Anggrek','Jalan Dahlia','','Jalan Kenanga',''],L2=['A','B','C = 110°','D','E','F','G','H'];
+['','b'].forEach(x=>{drawC('svgL1'+x,65,['65°','?','?','?'],1);drawP('svgL2'+x,110,L2,[2],NM2)});
+
+/* Kegiatan 2 */
+const L8='abcdefgh'.split(''),NMG=['M','N','P','R','T','S'];
+const PR=[['ae','sehadap'],['dh','sehadap'],['cf','dalam'],['de','dalam'],['ah','luar'],['bg','luar'],['ce','sd'],['df','sd'],['ag','sl'],['bh','sl']];
+const TM={sehadap:'Sehadap',dalam:'Dalam berseberangan',luar:'Luar berseberangan',sd:'Dalam sepihak',sl:'Luar sepihak'};
+$('pt').innerHTML='<tr><th>No</th><th>Pasangan sudut</th><th>Istilah</th></tr>'+PR.map((p,i)=>`<tr data-q="${p[0]}"><td>${i+1}</td><td>∠${p[0][0]} dan ∠${p[0][1]}</td><td><select data-a="${p[1]}" data-l="K2 no ${i+1}: ∠${p[0][0]} dan ∠${p[0][1]}"><option value="">Pilih…</option>${Object.keys(TM).map(k=>`<option value="${k}">${TM[k]}</option>`).join('')}</select></td></tr>`).join('');
+$('pt').addEventListener('focusin',e=>{const r=e.target.closest('tr[data-q]');if(r)drawP('svgG',60,L8,[...r.dataset.q].map(c=>L8.indexOf(c)),NMG)});
+drawP('svgG',60,L8,[],NMG);
+function chkBB(){const g=[1,2,3,4].map(i=>$('b'+i).value.trim().toLowerCase()),k=(a,b)=>[a,b].sort().join(''),p=[k(g[0],g[1]),k(g[2],g[3])],ok=p[0]!=p[1]&&p.every(x=>x=='ad'||x=='bc');
+  document.querySelector('.bb').dataset.skor=ok?'benar':'belum benar';$('bbr').innerHTML=ok?'<span class="ok">✅ Benar!</span>':'<span class="bad">❌ Belum tepat. Cari dua sudut yang saling berhadapan di titik potong garis MN.</span>'}
+
+/* Kegiatan 3A */
+function rC(){const t=+$('thA').value,v=V3(t);drawC('svgC',t,v.map((x,i)=>`∠${i+1}=${x}°`));$('thAv').textContent=t+'°'}
+$('thA').oninput=rC;rC();
+
+/* Kegiatan 3B */
+const PB=[['Sehadap',1,5,'s'],['Sehadap',4,8,'s'],['Dalam berseberangan',3,6,'s'],['Luar berseberangan',1,8,'s'],['Dalam sepihak',3,5,'j'],['Luar sepihak',1,7,'j']];
+$('t8').innerHTML='<tr><th>Sudut</th>'+[1,2,3,4,5,6,7,8].map(k=>`<th>∠${k}</th>`).join('')+'</tr><tr><th>Besar (derajat)</th>'+[1,2,3,4,5,6,7,8].map(k=>`<td><input type="number" data-m8="${k-1}" data-tol=".6" data-l="3B: besar ∠${k}"></td>`).join('')+'</tr>';
+$('t6').innerHTML='<tr><th>Pasangan</th><th>Besar sudut pertama</th><th>Besar sudut kedua</th><th>Hubungan</th></tr>'+PB.map(p=>`<tr data-p="${p[1]},${p[2]}"><td>${p[0]} (∠${p[1]} dan ∠${p[2]})</td><td><input type="number" data-ref="${p[1]-1}" data-tol=".6" data-l="3B ${p[0]} ∠${p[1]}: besar"></td><td><input type="number" data-ref="${p[2]-1}" data-tol=".6" data-l="3B ${p[0]} ∠${p[2]}: besar"></td><td><select data-a="${p[3]}" data-l="3B ${p[0]} ∠${p[1]}&∠${p[2]}: hubungan"><option value="">Pilih…</option><option value="s">sama besar</option><option value="j">jumlahnya 180°</option></select></td></tr>`).join('');
+let h8=[];
+function rP(){const t=+$('thB').value,v=V8(t),sv=$('shB').checked;drawP('svgP',t,v.map((x,i)=>sv?`${i+1}=${x}°`:`${i+1}`),h8);$('thBv').textContent=t+'°'}
+$('thB').oninput=rP;$('shB').onchange=rP;
+$('t6').addEventListener('focusin',e=>{const r=e.target.closest('tr[data-p]');h8=r?r.dataset.p.split(',').map(n=>n-1):[];rP()});
+rP();
+
+/* Fase 4 Bagian B */
+const BB=[['A',70],['B',110],['C',110],['D',70],['E',70],['F',110],['G',110]];
+$('tB').innerHTML='<tr><th>Sudut</th><th>Besar (°)</th><th>Alasan</th></tr>'+BB.map(r=>`<tr><td>∠${r[0]}</td><td><input type="number" data-a="${r[1]}" data-l="B ∠${r[0]}: besar"></td><td><textarea data-l="B ∠${r[0]}: alasan"></textarea></td></tr>`).join('');
+
+/* pemeriksa umum */
+function chk(b){const w=b.closest('.nc'),num=e=>parseFloat((e.value||'').replace(',','.'));let ok=0,n=0;
+  /* tabel ukuran: dinilai dari konsistensi angka siswa sendiri (hasil ukur GeoGebra boleh sembarang) */
+  const m3=[0,1,2,3].map(i=>w.querySelector(`[data-m3="${i}"]`));
+  if(m3[0]){const a=num(m3[0]),e=[a,180-a,a,180-a];m3.forEach((x,i)=>x.dataset.a=isNaN(a)||a<=0||a>=180?'x':String(e[i]))}
+  const m8=[0,1,2,3,4,5,6,7].map(i=>w.querySelector(`[data-m8="${i}"]`));
+  if(m8[0]){const a=num(m8[0]),e=[a,180-a,180-a,a,a,180-a,180-a,a];m8.forEach((x,i)=>x.dataset.a=isNaN(a)||a<=0||a>=180?'x':String(e[i]))}
+  w.querySelectorAll('[data-ref]').forEach(x=>{const m=w.querySelector(`[data-m8="${x.dataset.ref}"]`);x.dataset.a=m&&m.value.trim()?String(num(m)):'x'});
+  w.querySelectorAll('[data-a]').forEach(i=>{n++;const v=i.value.trim().replace(',','.'),g=i.dataset.a,tol=+i.dataset.tol||.011,good=v===g||(i.type=='number'&&v!==''&&Math.abs(+v-+g)<=tol);i.classList.toggle('okb',good);i.classList.toggle('badb',!good);if(good)ok++});
+  w.dataset.skor=ok+'/'+n;w.querySelector('.res').innerHTML=`<b>${ok} dari ${n} benar.</b>`+(ok<n?' Periksa lagi bagian yang berwarna merah.':' Hebat!')}
+
+/* GeoGebra (fitur lengkap: toolbar, menu, input aljabar, style bar, klik kanan) */
+const gd={};
+function loadG(id,h){if(gd[id])return;gd[id]=1;const b=$(id);
+  const fail=()=>{b.innerHTML=`<p style="padding:14px">GeoGebra belum dapat dimuat. Periksa koneksi internet.<br><button class="btn" onclick="gd['${id}']=0;loadG('${id}',${h})">Coba lagi</button></p>`};
+  const run=()=>{try{b.innerHTML='';new GGBApplet({appName:'classic',width:Math.max(320,b.clientWidth||900),height:h,scaleContainerClass:'ggbfit',allowUpscale:false,showToolBar:true,showToolBarHelp:true,showMenuBar:true,showAlgebraInput:true,allowStyleBar:true,showResetIcon:true,showFullscreenButton:true,enableRightClick:true,enableLabelDrags:true,enableShiftDragZoom:true,language:'id'},true).inject(id)}catch(e){fail()}};
+  if(window.GGBApplet)run();else{const s=document.createElement('script');s.src='https://www.geogebra.org/apps/deployggb.js';s.onload=run;s.onerror=fail;document.head.appendChild(s)}}
+
+/* kumpul & kirim jawaban */
+function lab(e){return e.dataset.l||(e.closest('.q')?e.closest('.q').firstElementChild.textContent:(e.previousElementSibling?e.previousElementSibling.textContent:''))}
+function collect(){
+  const d={},put=(k,v)=>{let n=k,i=2;while(n in d)n=k+' ('+i++ +')';d[n]=v};
+  put('Nama kelompok',$('nama').value);put('Anggota kelompok',$('kelas').value);put('Hari/tanggal',$('tgl').value);
+  A('main textarea,main input,main select').forEach(e=>{
+    if(e.closest('.ggbfit')||['nama','kelas','tgl'].includes(e.id)||e.type=='range'||e.type=='checkbox')return;
+    const v=e.tagName=='SELECT'?(e.value?e.selectedOptions[0].text:''):e.value;
+    put(e.closest('section').dataset.n+': '+lab(e).replace(/\s+/g,' ').trim().slice(0,60),v)});
+  A('[data-s]').forEach(e=>put('Skor '+e.dataset.s,e.dataset.skor||'belum diperiksa'));
+  return d}
+function saveRef(){
+  const d=collect();
+  try{localStorage.setItem('jawaban_p1',JSON.stringify(d))}catch(e){}
+  if(!d['Nama kelompok'].trim()){$('fbRef').innerHTML='<p class="bad">Isi nama kelompok dulu di tab Identitas.</p>';return}
+  if(!GAS_URL){$('fbRef').innerHTML='<p class="bad">Jawaban baru tersimpan di perangkat ini. URL Google Sheets belum diisi di file (GAS_URL).</p>';return}
+  $('fbRef').innerHTML='<p>Mengirim…</p>';
+  fetch(GAS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)}).then(()=>$('fbRef').innerHTML='<p class="ok">✅ Jawaban dikirim ke guru.</p>').catch(()=>$('fbRef').innerHTML='<p class="bad">Gagal mengirim. Periksa internet lalu coba lagi. Jawaban tetap tersimpan di perangkat ini.</p>');
+}
+</script>
+</body>
+</html>
